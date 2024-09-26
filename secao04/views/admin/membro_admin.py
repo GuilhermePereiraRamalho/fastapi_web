@@ -7,7 +7,6 @@ from fastapi.exceptions import HTTPException
 from fastapi.responses import RedirectResponse, Response
 from core.configs import settings
 from controllers.membro_controller import MembroController
-from secao04.controllers.base_controller import BaseController
 from views.admin.base_crud_view import BaseCrudView
 
 
