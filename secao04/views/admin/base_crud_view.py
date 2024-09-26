@@ -51,7 +51,7 @@ class BaseCrudView:
         return Response(object_controller.request.url_for(f'{self.template_base}_list'))
     
 
-    async def objetct_details(self, object_controller: BaseController, obj_id: int) -> Response:
+    async def object_details(self, object_controller: BaseController, obj_id: int) -> Response:
         """
         Rota para apresentar os detalhes de um objeto [GET]
         """
