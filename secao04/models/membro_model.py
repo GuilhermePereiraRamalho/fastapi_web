@@ -11,7 +11,7 @@ class MembroModel(Settings.DBBaseModel):
     funcao: str = Column(String(100))
     imagem: str = Column(String(100)) # 150x150
 
-    @validates("funao")
+    @validates("funcao")
     def _valida_funcao(self, key, value):
         if value is None or value == "":
             raise ValueError("Você precisa informar uma função válida")

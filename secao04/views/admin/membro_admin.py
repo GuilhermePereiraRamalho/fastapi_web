@@ -17,9 +17,9 @@ class MembroAdmin(BaseCrudView):
 
         self.router.routes.append(Route(path="/membro/list", endpoint=self.object_list, methods=["GET",], name="membro_list"))
         self.router.routes.append(Route(path="/membro/create", endpoint=self.object_create, methods=["GET", "POST"], name="membro_create"))
-        self.router.routes.append(Route(path="/membro/details/{membro_id: int}", endpoint=self.object_details, methods=["GET",], name="membro_details"))
-        self.router.routes.append(Route(path="/membro/edit/{membro_id: id}", endpoint=self.object_edit, methods=["GET", "POST"], name="membro_edit"))
-        self.router.routes.append(Route(path="/membro/delete/{membro_id: id}", endpoint=self.object_delete, methods=["DELETE",], name="membro_delete"))
+        self.router.routes.append(Route(path="/membro/details/{membro_id:int}", endpoint=self.object_edit, methods=["GET",], name="membro_details"))
+        self.router.routes.append(Route(path="/membro/edit/{membro_id:int}", endpoint=self.object_edit, methods=["GET", "POST"], name="membro_edit"))
+        self.router.routes.append(Route(path="/membro/delete/{membro_id:int}", endpoint=self.object_delete, methods=["DELETE",], name="membro_delete"))
 
 
         super().__init__("membro")
@@ -35,7 +35,7 @@ class MembroAdmin(BaseCrudView):
         membro_controller: MembroController = MembroController(request)
         membro_id: int = request.path_params["membro_id"]
 
-        return await super().object_delete(object_controller=membro_controller, obj_id=membro_id)
+        return await super().object_delete(object_controller=membro_controller, id_obj=membro_id)
     
 
     async def object_create(self, request: Request) -> Response:
@@ -53,7 +53,7 @@ class MembroAdmin(BaseCrudView):
             await membro_controller.post_crud()
         except ValueError as err:
             nome: str = form.get("nome")
-            funcao: str = form.get(funcao)
+            funcao: str = form.get('funcao')
             dados = {"nome": nome, "funcao": funcao}
             context = {
                 "request": request,
@@ -64,7 +64,7 @@ class MembroAdmin(BaseCrudView):
             return settings.TEMPLATES.TemplateResponse("admin/membro/create.html", context=context)
         
 
-        return RedirectResponse(request.url_for("membro_list"), status_code=status.HTTP_201_CREATED)
+        return RedirectResponse(request.url_for("membro_list"), status_code=status.HTTP_302_FOUND)
 
 
     async def object_edit(self, request: Request) -> Response:
@@ -98,7 +98,7 @@ class MembroAdmin(BaseCrudView):
             }
             return settings.TEMPLATES.TemplateResponse("admin/membro/edit.html", context=context)
 
-        return RedirectResponse(request.url_for("membro_list"), status_code=status.HTTP_202_ACCEPTED)
+        return RedirectResponse(request.url_for("membro_list"), status_code=status.HTTP_302_FOUND)
     
 
 membro_admin = MembroAdmin()

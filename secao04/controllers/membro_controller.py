@@ -52,7 +52,7 @@ class MembroController(BaseController):
                     membro.funcao = funcao
                 if imagem.filename:
                     arquivo_ext: str = imagem.filename.split(".")[-1]
-                    novo_nome:str = f"{str(uuid4())}/{arquivo_ext}"
+                    novo_nome:str = f"{str(uuid4())}.{arquivo_ext}"
                     membro.imagem = novo_nome
 
                     async with async_open(f"{settings.MEDIA}/{novo_nome}", "wb") as afile:

@@ -3,7 +3,7 @@
 <h1 class="h3 mb-2 text-gray-800">Membro</h1>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">ID: {{ object.id }}</h6>
+        <h6 class="m-0 font-weight-bold text-primary">ID: {{ objeto.id }}</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -17,9 +17,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ object.nome }}</td>
-                        <td>{{ object.funcao }}</td>
-                        <td><a href="{{ url_for('media', path=object.imagem) }}" target="_blank"><img src="{{ url_for('media', path=object.imagem) }}" width="7%" height="auto" /></a></td>
+                        <td>{{ objeto.nome }}</td>
+                        <td>{{ objeto.funcao }}</td>
+                        <td><a href="{{ url_for('media', path=objeto.imagem) }}" target="_blank"><img
+                                    src="{{ url_for('media', path=objeto.imagem) }}" width="7%" height="auto" /></a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -27,14 +29,15 @@
         <div class="card-footer d-flex align-items-right">
             <div class="row">
                 <div class="col">
-                    <a href="{{ url_for('membro_list') }}" class="btn bnt-info">Voltar</a>
+                    <a href="{{ url_for('membro_list') }}" class="btn btn-info">Voltar</a>
                 </div>
             </div>
             <div class="col">
-                <a href="#" data-url="{{ url_for('membro_delete', membro_id=object.id )}}" data-toggle="modal" data-taget="#modal-delete" class="btn btn-danger">Deletar</a>
+                <a href="#" data-url="{{ url_for('membro_delete', membro_id=objeto.id )}}" data-toggle="modal"
+                    data-target="#modal-delete" class="btn btn-danger">Deletar</a>
             </div>
             <div class="col">
-                <a href="{{ url_for('membro_edit', membro_id=object.id) }}" class="btn btn-primary">Editar</a>
+                <a href="{{ url_for('membro_edit', membro_id=objeto.id) }}" class="btn btn-primary">Editar</a>
             </div>
         </div>
     </div>
