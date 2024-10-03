@@ -47,5 +47,5 @@ class BaseController:
             obj: self.model = await session.get(self.model, id_obj)
 
             if obj:
-                await session.delete()
+                await session.delete(obj)
                 await session.commit()

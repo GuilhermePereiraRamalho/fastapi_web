@@ -36,8 +36,7 @@
                                     <i class="fas fa-pen-square"></i>
                                 </span>
                             </a>
-                            <a href="{{ url_for('membro_delete', membro_id=dado.id ) }}" data-target="#modal-delete"
-                                title="deletar">
+                            <a href="#" data-url="{{ url_for('membro_delete', membro_id=dado.id ) }}" data-target="#modal-delete" data-toggle="modal" title="deletar">
                                 <span class="me-1 px-2">
                                     <i class="fas fa-trash"></i>
                                 </span>
