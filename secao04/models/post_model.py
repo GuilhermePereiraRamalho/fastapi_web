@@ -33,3 +33,13 @@ class PostModel(settings.DBBaseModel):
     comentarios: Mapped[List[object]] = relationship('ComentarioModel', secondary=comentarios_post, backref='comentario', lazy='joined')
     id_autor: Mapped[int] = mapped_column(Integer, ForeignKey('autores.id'))
     autor: Mapped[AutorModel] = relationship('AutorModel', lazy='joined')
+
+    @property
+    def get_tags_list(self):
+        lista: List[int] = []
+
+        for tag in self.tags:
+            lista.append(int(tag.id))
+        
+        return lista
+

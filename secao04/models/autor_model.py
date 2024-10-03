@@ -26,3 +26,12 @@ class AutorModel(settings.DBBaseModel):
         backref="taga", 
         lazy="joined"
     )
+
+    @property
+    def get_tags_list(self):
+        lista: List[int] = []
+
+        for tag in self.tags:
+            lista.append(int(tag.id))
+        
+        return lista
